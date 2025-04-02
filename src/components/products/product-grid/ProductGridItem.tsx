@@ -14,7 +14,6 @@ export const ProductGridItem = ({ product }: Props) => {
           <Image
             src={product.images[0]}
             alt={product.title}
-            // priority={true}
             loading="lazy"
             width={300}
             height={200}

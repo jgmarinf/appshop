@@ -13,7 +13,9 @@ export const prefetchProducts = async () => {
   await queryClient.prefetchQuery({
     queryKey: ["products"],
     queryFn: async () => {
-      const response = await fetch("https://api.escuelajs.co/api/v1/products");
+      const response = await fetch(
+        "https://api.escuelajs.co/api/v1/products?offset=0&limit=45"
+      );
       if (!response.ok) throw new Error("Error fetching products");
       return response.json();
     },
