@@ -7,7 +7,7 @@ export const TopMenu = () => {
         {/* Logo */}
         <div>
             <Link href="/">
-            <span className="antialiased font-bold "> Tienda </span>
+            <span className="antialiased font-bold "> AppShop </span>
             </Link>    
         </div>
         {/* Center Menu */}
