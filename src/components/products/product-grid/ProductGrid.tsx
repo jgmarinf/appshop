@@ -1,6 +1,7 @@
 "use client";
 import { Product } from "@/interfaces";
 import { useQuery } from "@tanstack/react-query";
+import { ProductGridItem } from "./ProductGridItem";
 
 export const ProductGrid = () => {
   const {
@@ -23,12 +24,7 @@ export const ProductGrid = () => {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 gap-10 mb-10">
       {products.map((product: Product) => (
-        <span
-          key={product.id}
-          className="bg-gray-200 rounded-md p-5 text-center"
-        >
-          {product.title}
-        </span>
+        <ProductGridItem key={product.id} product={product} />
       ))}
     </div>
   );
