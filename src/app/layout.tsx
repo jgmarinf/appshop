@@ -1,4 +1,5 @@
-import { Font } from "@/config/fonts";
+import { Font } from '@/config/fonts';
+import { Providers } from '@/provider/ReactQueryProvider';
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -11,15 +12,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body
-        className={`${Font.variable} antialiased`}
-      >
-        {children}
+      <body className={`${Font.variable} antialiased`}>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

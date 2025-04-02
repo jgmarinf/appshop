@@ -1,11 +1,21 @@
-/* export const getProducts = async () => {
-  try {
-    const response = await fetch('https://fakestoreapi.com/products');
-    if (!response.ok) throw new Error('Error en la solicitud');
-    const data = await response.json();
-    return { data, error: null };
-  } catch (error) {
-    return { data: null, error: error instanceof Error ? error.message : 'Error desconocido' };
+import { QueryClient } from '@tanstack/react-query';
+
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 60 * 1000,
+      refetchOnWindowFocus: false
+    }
   }
+});
+
+export const prefetchProducts = async () => {
+  await queryClient.prefetchQuery({
+    queryKey: ['products'],
+    queryFn: async () => {
+      const response = await fetch('https://fakestoreapi.com/products');
+      if (!response.ok) throw new Error('Error fetching products');
+      return response.json();
+    }
+  });
 };
- */

@@ -1,15 +1,13 @@
-import { Title } from "@/components";
+import { ProductGrid, Title } from "@/components";
+import { prefetchProducts } from "@/services/products.service";
 
 export default async function Home() {
-  //const { data: products, error } = await getProducts();
-
+  await prefetchProducts();
 
   return (
     <div>
       <Title title="Tienda" subtitle="Todos los productos" />
-      {/* {!products ? <h3>{error}</h3> : 
-      <ProductGrid products={products} />
-  } */}
+      <ProductGrid />
     </div>
   );
 }
