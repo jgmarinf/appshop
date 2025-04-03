@@ -6,18 +6,16 @@ interface Props {
   };
 }
 
-
 export default async function CategoryPage({ params }: Props) {
   const { id } = await params;
 
   if (id === "kids") {
-    notFound()
+    notFound();
   }
 
-    return (
-      <div>
-        <h1 className="font-bold">Category Page {id}</h1>
-      </div>
-    );
-  }
-  
+  return (
+    <div>
+      <h1 className="font-bold">Category Page {id}</h1>
+    </div>
+  );
+}
