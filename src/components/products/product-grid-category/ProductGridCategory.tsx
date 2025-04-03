@@ -1,6 +1,6 @@
 "use client";
+import { useProducts } from "@/hooks/useProducts";
 import { Product } from "@/interfaces";
-import { useQuery } from "@tanstack/react-query";
 import { ProductGridItem } from "../product-grid/ProductGridItem";
 
 interface Props {
@@ -8,19 +8,7 @@ interface Props {
 }
 
 export const ProductGridCategory = ({ slug }: Props) => {
-  const {
-    data: products,
-    error,
-    isPending,
-  } = useQuery({
-    queryKey: ["products"],
-    queryFn: async () => {
-      const response = await fetch("https://fakestoreapi.com/products");
-      if (!response.ok) throw new Error("Error fetching products");
-      return await response.json();
-    },
-    staleTime: 60 * 1000,
-  });
+  const { data: products, error, isPending } = useProducts();
 
   if (error) return <h3 className="text-red-500">{error.message}</h3>;
   if (isPending) return <h3>Cargando productos...</h3>;

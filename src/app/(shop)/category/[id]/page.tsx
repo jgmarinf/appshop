@@ -1,4 +1,5 @@
 import { ProductGridCategory, Title } from "@/components";
+import { prefetchProducts } from "@/services/products.service";
 import { notFound } from "next/navigation";
 
 interface Props {
@@ -8,6 +9,7 @@ interface Props {
 }
 
 export default async function CategoryPage({ params }: Props) {
+  await prefetchProducts();
   const { id } = await params;
 
   const categoryMap: { [key: string]: string } = {
