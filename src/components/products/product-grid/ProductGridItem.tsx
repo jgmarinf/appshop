@@ -12,7 +12,7 @@ export const ProductGridItem = ({ product }: Props) => {
       <div className="h-80 w-full overflow-hidden">
         <Link href={`/product/${product.id}`}>
           <Image
-            src={product.images[0]}
+            src={product.image}
             alt={product.title}
             loading="lazy"
             width={300}
