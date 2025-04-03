@@ -1,3 +1,4 @@
+export * from "./product/ProductDetails";
 export * from "./products/product-grid-category/ProductGridCategory";
 export * from "./products/product-grid/ProductGrid";
 export * from "./products/product-grid/ProductGridItem";

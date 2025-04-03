@@ -17,7 +17,7 @@ export const ProductGridItem = ({ product }: Props) => {
             loading="lazy"
             width={300}
             height={200}
-            className="w-full h-full hover:scale-125 object-cover transition-transform duration-300"
+            className="w-full h-full hover:scale-125 object-contain transition-transform duration-300"
           />
         </Link>
       </div>
