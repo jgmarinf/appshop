@@ -1,3 +1,4 @@
+import { ProductGridCategory, Title } from "@/components";
 import { notFound } from "next/navigation";
 
 interface Props {
@@ -9,13 +10,22 @@ interface Props {
 export default async function CategoryPage({ params }: Props) {
   const { id } = await params;
 
+  const categoryMap: { [key: string]: string } = {
+    Hombres: "men's clothing",
+    Joyas: "jewelery",
+    Electronica: "electronics",
+    Mujeres: "women's clothing",
+  };
+  const slug = categoryMap[id];
+
   if (id === "kids") {
     notFound();
   }
 
   return (
     <div>
-      <h1 className="font-bold">Category Page {id}</h1>
+      <Title title={id} subtitle={`Productos de ${id}`} />
+      <ProductGridCategory slug={slug} />
     </div>
   );
 }
