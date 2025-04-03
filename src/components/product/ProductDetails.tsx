@@ -4,6 +4,7 @@ import { useProduct } from "@/hooks/useProduct";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { IoStarOutline } from "react-icons/io5";
+import { QuantitySelector } from "./quantity-selector/QuantitySelector";
 
 interface Props {
   id: string;
@@ -34,7 +35,7 @@ export const ProductDetails = ({ id }: Props) => {
         <div className="col-span-1 p-5 bg-white rounded-lg shadow-md">
           <h1 className="antaliased mb-2 font-bold text-xl">{product.title}</h1>
           <p className="text-lg mb-2">${product.price}</p>
-          {/* cantidad y calificacion */}
+          <QuantitySelector quantity={1} />
           <div className="flex items-center gap-2">
             <p className="text-lg mb-0">{product.rating.rate} de 5 estrellas</p>
             <IoStarOutline size={22} />
