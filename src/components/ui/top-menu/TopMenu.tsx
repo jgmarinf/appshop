@@ -1,11 +1,13 @@
 "use client";
 import { useCartStore, useUIStore } from "@/store";
 import Link from "next/link";
-import { IoCartOutline, IoSearchOutline } from "react-icons/io5";
+import { useState } from "react";
+import { IoCartOutline, IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
 
 export const TopMenu = () => {
   const openSideMenu = useUIStore((state) => state.openSideMenu);
   const products = useCartStore((state) => state.products);
+  const [theme, setTheme] = useState(true);
   return (
     <nav className="flex px-5 justify-between items-center w-full">
       {/* Logo */}
@@ -43,9 +45,21 @@ export const TopMenu = () => {
       </div>
       {/* Search, Cart, Menu */}
       <div className="flex items-center">
-        <Link href="/search" className="mx-2">
-          <IoSearchOutline className="w-5 h-5" />
-        </Link>
+        {theme ? (
+          <button
+            onClick={() => setTheme(false)}
+            className="mx-2 cursor-pointer"
+          >
+            <IoMoonOutline className="w-5 h-5" />
+          </button>
+        ) : (
+          <button
+            onClick={() => setTheme(true)}
+            className="mx-2 cursor-pointer"
+          >
+            <IoSunnyOutline className="w-5 h-5" />
+          </button>
+        )}
         <Link href="/car" className="mx-2">
           <div className="relative">
             {products.length > 0 && (
