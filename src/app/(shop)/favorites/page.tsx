@@ -33,7 +33,8 @@ export default function Favorites() {
                   className="mr-5 rounded object-contain"
                 />
                 <div>
-                  <p className="font-bold text-3xl">{product.title}</p>
+                  <p className="font-bold sm:text-3xl">{product.title}</p>
+                  <p className="font-normal sm:text-2xl">${product.price}</p>
                 </div>
               </div>
             ))}

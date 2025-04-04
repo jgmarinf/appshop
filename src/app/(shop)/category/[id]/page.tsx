@@ -21,7 +21,7 @@ export default async function CategoryPage(props: Props) {
   const slug = categoryMap[id];
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center sm:items-start">
       <Title title={id} subtitle={`Productos de ${id}`} />
       <ProductGridCategory slug={slug} />
     </div>

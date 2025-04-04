@@ -14,7 +14,7 @@ export const ProductGridCategory = ({ slug }: Props) => {
   if (isPending) return <h3>Cargando productos...</h3>;
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 gap-10 mb-10">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4  gap-10 mb-10">
       {products
         .filter((product: Product) => product.category === slug)
         .map((product: Product) => (
