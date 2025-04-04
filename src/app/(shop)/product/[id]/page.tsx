@@ -1,13 +1,14 @@
 import { ProductDetails, ProductGridAround } from "@/components";
 
 interface Props {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-export default async function Product({ params }: Props) {
-  const { id } = await params;
+export default async function Product(props: Props) {
+  const { id } = await props.params;
   return (
     <div className="flex flex-col items-center justify-center">
       <ProductDetails id={id} />
