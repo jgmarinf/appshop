@@ -1,24 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# appshop - E-commerce Moderno
 
-## Getting Started
+## 🚀 Instrucciones de Ejecución
 
-First, run the development server:
-
+1. Clonar repositorio:
+```bash
+git clone [url-del-repositorio]
+```
+2. Instalar dependencias:
+```bash
+npm install
+```
+3. Iniciar servidor de desarrollo:
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🌟 Características Implementadas
+- 🛒 Sistema de carrito de compras con persistencia
+- ❤️ Lista de favoritos interactiva
+- 🔐 Autenticación de usuarios
+- 🎨 Diseño responsive con Tailwind CSS
+- 🌐 Consumo de Fake Store API con react-query
+- ⚡ Optimizaciones de rendimiento con Next.js 15
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 4. Integración con API Externa
+- **Problema**: Consumo eficiente de datos desde Fake Store API
+- **Solución**: Implementación de react-query para caching y re-fetching
+- **Resultado**: Tiempos de carga optimizados + manejo de estados de carga/error
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧠 Decisiones Técnicas
+### Arquitectura
+- App Router de Next.js para enrutamiento
+- Layouts anidados para estructura de tienda
+- React Server Components para renderizado eficiente
+
+### Estado Global
+- Zustand para gestión de estado (carrito, favoritos, UI)
+- Persistencia en localStorage/sessionStorage
+
+### Estilos
+- Tailwind CSS con configuración personalizada
+- Variables CSS para temas y colores
+- Animaciones personalizadas para transiciones
+
+## 🛠 Desafíos y Soluciones
+### 1. Persistencia de Estado
+- **Problema**: Mantener estado entre recargas
+- **Solución**: Implementación de middlewares en Zustand + localStorage
+
+### 2. Diseño Responsive
+- **Problema**: Adaptación a móviles
+- **Solución**: Uso intensivo de Tailwind CSS + Grid/Flex
+
+### 3. Optimización de Imágenes
+- **Problema**: Carga lenta de imágenes
+- **Solución**: Componente Image de Next.js + lazy loading
+
+---
+
+## 🚧 Desarrollo Futuro
+- [ ] Sistema de pagos integrado
+- [ ] Búsqueda en tiempo real
+- [ ] Internacionalización
+
+## 📄 Licencia
+MIT License
 
 ## Learn More
 
