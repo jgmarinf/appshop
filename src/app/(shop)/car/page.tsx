@@ -1,6 +1,7 @@
 "use client";
 import { Title } from "@/components";
 import Empty from "@/components/ui/empty/Empty";
+import { useAuthStore } from "@/store";
 import { useCartStore } from "@/store/carrito-list/car-store";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,6 +9,7 @@ import Link from "next/link";
 export default function CartPage() {
   const products = useCartStore((state) => state.products);
   const removeProduct = useCartStore((state) => state.removeProduct);
+  const auth = useAuthStore((state) => state.auth);
 
   if (products.length === 0) {
     return <Empty />;
@@ -62,7 +64,7 @@ export default function CartPage() {
             ))}
           </div>
           {/* Checkout */}
-          <div className="bg-white rounded-xl shadow-xl p-7">
+          <div className="bg-white rounded-xl shadow-xl p-7 h-[300px]">
             <h2 className="text-2xl mb-2">Resumen de compra</h2>
             <div className="grid grid-cols-2">
               <span>No. de items</span>
@@ -78,10 +80,10 @@ export default function CartPage() {
             </div>
             <div className="mt-5 mb-2 w-full">
               <Link
-                href="/checkout/address"
+                href={auth ? "/finish" : "/auth/login"}
                 className="flex btn-primary justify-center"
               >
-                Checkout
+                Comprar
               </Link>
             </div>
           </div>

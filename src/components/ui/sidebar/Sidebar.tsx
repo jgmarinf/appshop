@@ -1,5 +1,5 @@
 "use client";
-import { useUIStore } from "@/store";
+import { useAuthStore, useUIStore } from "@/store";
 import clsx from "clsx";
 import Link from "next/link";
 import {
@@ -16,6 +16,8 @@ import {
 export const Sidebar = () => {
   const isSideMenuOpen = useUIStore((state) => state.isSideMenuOpen);
   const closeMenu = useUIStore((state) => state.closeSideMenu);
+  const auth = useAuthStore((state) => state.auth);
+  const logOut = useAuthStore((state) => state.logOut);
   return (
     <div>
       {/* Background black */}
@@ -73,22 +75,28 @@ export const Sidebar = () => {
             <IoTicketOutline size={20} />
             <span className="ml-3 ">Ordenes</span>
           </Link>
-          <Link
-            onClick={closeMenu}
-            href="/"
-            className="flex items-center p-2 hover:bg-gray-100 rounded transition-all"
-          >
-            <IoLogInOutline size={20} />
-            <span className="ml-3 ">Ingresar</span>
-          </Link>
-          <Link
-            onClick={closeMenu}
-            href="/"
-            className="flex items-center p-2 hover:bg-gray-100 rounded transition-all"
-          >
-            <IoLogOutOutline size={20} />
-            <span className="ml-3 ">Salir</span>
-          </Link>
+          {!auth ? (
+            <Link
+              onClick={closeMenu}
+              href="/auth/login"
+              className="flex items-center p-2 hover:bg-gray-100 rounded transition-all"
+            >
+              <IoLogInOutline size={20} />
+              <span className="ml-3 ">Ingresar</span>
+            </Link>
+          ) : (
+            <Link
+              onClick={() => {
+                logOut();
+                closeMenu();
+              }}
+              href="/"
+              className="flex items-center p-2 hover:bg-gray-100 rounded transition-all"
+            >
+              <IoLogOutOutline size={20} />
+              <span className="ml-3 ">Salir</span>
+            </Link>
+          )}
 
           {/* Linea separadora */}
           <div className="h-px w-full my-5 bg-gray-200" />

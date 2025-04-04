@@ -1,6 +1,5 @@
 import { ProductGridCategory, Title } from "@/components";
 import { prefetchProducts } from "@/services/products.service";
-import { notFound } from "next/navigation";
 
 interface Props {
   params: {
@@ -19,10 +18,6 @@ export default async function CategoryPage({ params }: Props) {
     Mujeres: "women's clothing",
   };
   const slug = categoryMap[id];
-
-  if (id === "kids") {
-    notFound();
-  }
 
   return (
     <div>
