@@ -1,5 +1,6 @@
 export * from "./product/ProductDetails";
 export * from "./product/quantity-selector/QuantitySelector";
+export * from "./products/product-grid-around/ProductGridAround";
 export * from "./products/product-grid-category/ProductGridCategory";
 export * from "./products/product-grid/ProductGrid";
 export * from "./products/product-grid/ProductGridItem";

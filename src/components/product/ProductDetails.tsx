@@ -36,35 +36,37 @@ export const ProductDetails = ({ id }: Props) => {
           </div>
         </div>
         {/* Details */}
-        <div className="col-span-1 gap-5 p-5 bg-white rounded-lg shadow-md">
+        <div className="col-span-1 p-5 bg-white rounded-lg shadow-md">
           <h1 className="antaliased mb-2 font-bold text-xl">{product.title}</h1>
           <p className="text-lg mb-2">${product.price}</p>
           <QuantitySelector quantity={quantity} setQuantity={setQuantity} />
-          <div className="flex items-center gap-2">
+          <div className="flex mb-2 items-center gap-2">
             <p className="text-lg mb-0">{product.rating.rate} de 5 estrellas</p>
             <IoStarOutline size={22} />
           </div>
           <p className="text-lg mb-2">
             quedan {product.rating.count} productos
           </p>
-          <Link
-            href="/car"
-            className="btn-primary my-3 w-full"
-            onClick={() =>
-              useCartStore.getState().addProduct(
-                {
-                  id: product.id,
-                  title: product.title,
-                  price: product.price,
-                  image: product.image,
-                },
-                quantity
-              )
-            }
-          >
-            agregar al carrito
-          </Link>
-          <h3 className="font-bold text-xl">Descripción</h3>
+          <div className="w-full mt-4">
+            <Link
+              href="/car"
+              className="btn-primary w-full"
+              onClick={() =>
+                useCartStore.getState().addProduct(
+                  {
+                    id: product.id,
+                    title: product.title,
+                    price: product.price,
+                    image: product.image,
+                  },
+                  quantity
+                )
+              }
+            >
+              agregar al carrito
+            </Link>
+          </div>
+          <h3 className="font-bold my-3 text-xl">Descripción</h3>
           <p className="font-light text-sm">{product.description}</p>
         </div>
       </div>
