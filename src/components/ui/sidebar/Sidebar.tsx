@@ -4,9 +4,9 @@ import clsx from "clsx";
 import Link from "next/link";
 import {
   IoCloseOutline,
+  IoHeartOutline,
   IoLogInOutline,
   IoLogOutOutline,
-  IoPeopleOutline,
   IoPersonOutline,
   IoSearchOutline,
   IoShirtOutline,
@@ -58,6 +58,7 @@ export const Sidebar = () => {
         {/* Menu */}
         <div className="flex flex-col mt-3 gap-3">
           <Link
+            onClick={closeMenu}
             href="/"
             className="flex items-center p-2 hover:bg-gray-100 rounded transition-all"
           >
@@ -65,6 +66,7 @@ export const Sidebar = () => {
             <span className="ml-3 ">Mi cuenta</span>
           </Link>
           <Link
+            onClick={closeMenu}
             href="/"
             className="flex items-center p-2 hover:bg-gray-100 rounded transition-all"
           >
@@ -72,6 +74,7 @@ export const Sidebar = () => {
             <span className="ml-3 ">Ordenes</span>
           </Link>
           <Link
+            onClick={closeMenu}
             href="/"
             className="flex items-center p-2 hover:bg-gray-100 rounded transition-all"
           >
@@ -79,6 +82,7 @@ export const Sidebar = () => {
             <span className="ml-3 ">Ingresar</span>
           </Link>
           <Link
+            onClick={closeMenu}
             href="/"
             className="flex items-center p-2 hover:bg-gray-100 rounded transition-all"
           >
@@ -90,6 +94,7 @@ export const Sidebar = () => {
           <div className="h-px w-full my-5 bg-gray-200" />
 
           <Link
+            onClick={closeMenu}
             href="/"
             className="flex items-center p-2 hover:bg-gray-100 rounded transition-all"
           >
@@ -98,6 +103,7 @@ export const Sidebar = () => {
           </Link>
 
           <Link
+            onClick={closeMenu}
             href="/"
             className="flex items-center p-2 hover:bg-gray-100 rounded transition-all"
           >
@@ -106,11 +112,12 @@ export const Sidebar = () => {
           </Link>
 
           <Link
-            href="/"
+            onClick={closeMenu}
+            href="/favorites"
             className="flex items-center p-2 hover:bg-gray-100 rounded transition-all"
           >
-            <IoPeopleOutline size={20} />
-            <span className="ml-3 ">Usuarios</span>
+            <IoHeartOutline size={20} />
+            <span className="ml-3 ">Favoritos</span>
           </Link>
         </div>
       </nav>

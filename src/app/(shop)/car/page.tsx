@@ -1,16 +1,16 @@
 "use client";
 import { Title } from "@/components";
+import Empty from "@/components/ui/empty/Empty";
 import { useCartStore } from "@/store/carrito-list/car-store";
 import Image from "next/image";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 
 export default function CartPage() {
   const products = useCartStore((state) => state.products);
   const removeProduct = useCartStore((state) => state.removeProduct);
 
   if (products.length === 0) {
-    redirect("/empty");
+    return <Empty />;
   }
 
   const totalItems = products.reduce(
