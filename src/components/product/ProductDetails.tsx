@@ -1,8 +1,11 @@
 "use client";
 
 import { useProduct } from "@/hooks/useProduct";
+import { useCartStore } from "@/store/carrito-list/car-store";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
+import { useState } from "react";
 import { IoStarOutline } from "react-icons/io5";
 import { QuantitySelector } from "./quantity-selector/QuantitySelector";
 
@@ -11,6 +14,7 @@ interface Props {
 }
 
 export const ProductDetails = ({ id }: Props) => {
+  const [quantity, setQuantity] = useState(1);
   const { data: product, error, isPending } = useProduct(id);
 
   if (isPending) return <h3>Cargando producto...</h3>;
@@ -32,10 +36,10 @@ export const ProductDetails = ({ id }: Props) => {
           </div>
         </div>
         {/* Details */}
-        <div className="col-span-1 p-5 bg-white rounded-lg shadow-md">
+        <div className="col-span-1 gap-5 p-5 bg-white rounded-lg shadow-md">
           <h1 className="antaliased mb-2 font-bold text-xl">{product.title}</h1>
           <p className="text-lg mb-2">${product.price}</p>
-          <QuantitySelector quantity={1} />
+          <QuantitySelector quantity={quantity} setQuantity={setQuantity} />
           <div className="flex items-center gap-2">
             <p className="text-lg mb-0">{product.rating.rate} de 5 estrellas</p>
             <IoStarOutline size={22} />
@@ -43,9 +47,23 @@ export const ProductDetails = ({ id }: Props) => {
           <p className="text-lg mb-2">
             quedan {product.rating.count} productos
           </p>
-          <button className="btn-primary my-3 w-full">
+          <Link
+            href="/car"
+            className="btn-primary my-3 w-full"
+            onClick={() =>
+              useCartStore.getState().addProduct(
+                {
+                  id: product.id,
+                  title: product.title,
+                  price: product.price,
+                  image: product.image,
+                },
+                quantity
+              )
+            }
+          >
             agregar al carrito
-          </button>
+          </Link>
           <h3 className="font-bold text-xl">Descripción</h3>
           <p className="font-light text-sm">{product.description}</p>
         </div>
