@@ -21,7 +21,7 @@ export const ProductDetails = ({ id }: Props) => {
   if (error) return notFound();
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center bg-white rounded">
       <div className="mt-5 mb-20 grid grid-cols-1 sm:w-[100vw] md:w-[78vw] xl:w-[60vw] sm:overflow-hidden sm:max-h-120 sm:grid-cols-3 gap-3 ">
         {/* Slideshow */}
         <div className="col-span-1  sm:col-span-2">
@@ -36,7 +36,7 @@ export const ProductDetails = ({ id }: Props) => {
           </div>
         </div>
         {/* Details */}
-        <div className="col-span-1 p-5 bg-white rounded-lg shadow-md">
+        <div className="col-span-1 p-5 text-black">
           <h1 className="antaliased mb-2 font-bold text-xl">{product.title}</h1>
           <p className="text-lg mb-2">${product.price}</p>
           <QuantitySelector quantity={quantity} setQuantity={setQuantity} />

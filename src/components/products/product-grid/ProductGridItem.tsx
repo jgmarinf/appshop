@@ -25,7 +25,7 @@ export const ProductGridItem = ({ product }: Props) => {
   };
 
   return (
-    <div className="max-w-sm rounded-lg shadow-lg relative">
+    <div className="max-w-sm rounded-lg shadow-lg relative bg-white">
       <div className="h-80 w-full overflow-hidden ">
         <Link href={`/product/${product.id}`}>
           <Image
@@ -39,10 +39,13 @@ export const ProductGridItem = ({ product }: Props) => {
         </Link>
       </div>
       <div className="p-4 flex flex-col ">
-        <Link className="hover:text-blue-700" href={`/product/${product.id}`}>
+        <Link
+          className="hover:text-blue-700 text-black"
+          href={`/product/${product.id}`}
+        >
           {product.title}
         </Link>
-        <span className="font-bold">${product.price}</span>
+        <span className="font-bold text-black">${product.price}</span>
       </div>
       <div
         className="absolute bottom-3 right-3 cursor-pointer"

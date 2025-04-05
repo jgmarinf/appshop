@@ -22,38 +22,35 @@ export const TopMenu = () => {
   };
 
   return (
-    <nav className="flex px-5 justify-between items-center w-full dark:bg-gray-900">
+    <nav className="flex px-5 justify-between items-center w-full">
       {/* Logo */}
       <div>
         <Link href="/">
-          <span className="antialiased font-bold text-xl dark:text-white">
-            {" "}
-            AppShop{" "}
-          </span>
+          <span className="antialiased font-bold text-xl "> AppShop </span>
         </Link>
       </div>
       {/* Center Menu */}
       <div className="hidden sm:block">
         <Link
-          className="m-2 p-2 rounded-md transition-all hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+          className="m-2 p-2 rounded-md transition-all   "
           href="/category/Hombres"
         >
           Hombres
         </Link>
         <Link
-          className="m-2 p-2 rounded-md transition-all hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+          className="m-2 p-2 rounded-md transition-all   "
           href="/category/Joyas"
         >
           Joyas
         </Link>
         <Link
-          className="m-2 p-2 rounded-md transition-all hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+          className="m-2 p-2 rounded-md transition-all   "
           href="/category/Electronica"
         >
           Electrónica
         </Link>
         <Link
-          className="m-2 p-2 rounded-md transition-all hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+          className="m-2 p-2 rounded-md transition-all   "
           href="/category/Mujeres"
         >
           Mujeres
@@ -69,7 +66,7 @@ export const TopMenu = () => {
             aria-label="Toggle theme"
           >
             {theme === "light" ? (
-              <IoMoonOutline className="w-5 h-5 dark:text-white" />
+              <IoMoonOutline className="w-5 h-5 " />
             ) : (
               <IoSunnyOutline className="w-5 h-5 text-white" />
             )}
@@ -82,11 +79,11 @@ export const TopMenu = () => {
                 {products.length}
               </span>
             )}
-            <IoCartOutline className="w-5 h-5 dark:text-white" />
+            <IoCartOutline className="w-5 h-5 " />
           </div>
         </Link>
         <button
-          className="m-2 p-2 rounded-md transition-all hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+          className="m-2 p-2 rounded-md transition-all   "
           onClick={openSideMenu}
         >
           Menu

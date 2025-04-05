@@ -33,7 +33,7 @@ export const Sidebar = () => {
       {/* SideMenu */}
       <nav
         className={clsx(
-          "fixed p-3 right-0 top-0 w-[400px] h-screen bg-white z-20 shadow-2xl transform transition-all duration-300",
+          "fixed p-3 right-0 top-0 w-[400px] h-screen bg-white z-20 shadow-2xl text-black transform transition-all duration-300",
           {
             "translate-x-full": !isSideMenuOpen,
           }

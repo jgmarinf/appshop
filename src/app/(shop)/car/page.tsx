@@ -40,7 +40,10 @@ export default function CartPage() {
 
             {/* Items */}
             {products.map((product) => (
-              <div key={product.id} className="flex mb-5">
+              <div
+                key={product.id}
+                className="flex mb-5 bg-white rounded text-black p-2 shadow-xl "
+              >
                 <Image
                   src={product.image}
                   alt={product.title}
@@ -50,7 +53,7 @@ export default function CartPage() {
                   className="mr-5 rounded object-contain"
                 />
                 <div>
-                  <p>{product.title}</p>
+                  <p className="font-semibold">{product.title}</p>
                   <p>$ {product.price}</p>
                   <p>Cantidad: X{product.cantidad}</p>
                   <button
@@ -64,7 +67,7 @@ export default function CartPage() {
             ))}
           </div>
           {/* Checkout */}
-          <div className="bg-white rounded-xl shadow-xl p-7 h-[300px]">
+          <div className="bg-white text-black rounded-xl shadow-xl p-7 h-[300px]">
             <h2 className="text-2xl mb-2">Resumen de compra</h2>
             <div className="grid grid-cols-2">
               <span>No. de items</span>

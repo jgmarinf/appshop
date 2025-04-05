@@ -23,7 +23,10 @@ export default function Favorites() {
             </Link>
 
             {favorites.map((product) => (
-              <div key={product.id} className="flex mb-5">
+              <div
+                key={product.id}
+                className="flex mb-5 bg-white rounded text-black p-3 shadow-xl "
+              >
                 <Image
                   src={product.image}
                   alt={product.title}
