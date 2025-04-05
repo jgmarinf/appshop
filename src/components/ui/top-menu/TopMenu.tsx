@@ -1,43 +1,59 @@
 "use client";
 import { useCartStore, useUIStore } from "@/store";
+import { useTheme } from "next-themes";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoCartOutline, IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
 
 export const TopMenu = () => {
   const openSideMenu = useUIStore((state) => state.openSideMenu);
   const products = useCartStore((state) => state.products);
-  const [theme, setTheme] = useState(true);
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  // Evitar problemas de hidratación montando el componente solo del lado del cliente
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Función para cambiar el tema
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
+
   return (
-    <nav className="flex px-5 justify-between items-center w-full">
+    <nav className="flex px-5 justify-between items-center w-full dark:bg-gray-900">
       {/* Logo */}
       <div>
         <Link href="/">
-          <span className="antialiased font-bold text-xl"> AppShop </span>
+          <span className="antialiased font-bold text-xl dark:text-white">
+            {" "}
+            AppShop{" "}
+          </span>
         </Link>
       </div>
       {/* Center Menu */}
       <div className="hidden sm:block">
         <Link
-          className="m-2 p-2 rounded-md transition-all hover:bg-gray-100"
+          className="m-2 p-2 rounded-md transition-all hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
           href="/category/Hombres"
         >
           Hombres
         </Link>
         <Link
-          className="m-2 p-2 rounded-md transition-all hover:bg-gray-100"
+          className="m-2 p-2 rounded-md transition-all hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
           href="/category/Joyas"
         >
           Joyas
         </Link>
         <Link
-          className="m-2 p-2 rounded-md transition-all hover:bg-gray-100"
+          className="m-2 p-2 rounded-md transition-all hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
           href="/category/Electronica"
         >
           Electrónica
         </Link>
         <Link
-          className="m-2 p-2 rounded-md transition-all hover:bg-gray-100"
+          className="m-2 p-2 rounded-md transition-all hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
           href="/category/Mujeres"
         >
           Mujeres
@@ -45,19 +61,18 @@ export const TopMenu = () => {
       </div>
       {/* Search, Cart, Menu */}
       <div className="flex items-center">
-        {theme ? (
+        {/* Solo renderizar los botones de tema cuando el componente está montado */}
+        {mounted && (
           <button
-            onClick={() => setTheme(false)}
+            onClick={toggleTheme}
             className="mx-2 cursor-pointer"
+            aria-label="Toggle theme"
           >
-            <IoMoonOutline className="w-5 h-5" />
-          </button>
-        ) : (
-          <button
-            onClick={() => setTheme(true)}
-            className="mx-2 cursor-pointer"
-          >
-            <IoSunnyOutline className="w-5 h-5" />
+            {theme === "light" ? (
+              <IoMoonOutline className="w-5 h-5 dark:text-white" />
+            ) : (
+              <IoSunnyOutline className="w-5 h-5 text-white" />
+            )}
           </button>
         )}
         <Link href="/car" className="mx-2">
@@ -67,11 +82,11 @@ export const TopMenu = () => {
                 {products.length}
               </span>
             )}
-            <IoCartOutline className="w-5 h-5" />
+            <IoCartOutline className="w-5 h-5 dark:text-white" />
           </div>
         </Link>
         <button
-          className="m-2 p-2 rounded-md transition-all hover:bg-gray-100"
+          className="m-2 p-2 rounded-md transition-all hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
           onClick={openSideMenu}
         >
           Menu

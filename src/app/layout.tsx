@@ -1,13 +1,13 @@
-import { Font } from '@/config/fonts';
-import { Providers } from '@/provider/ReactQueryProvider';
+import { Font } from "@/config/fonts";
+import { Providers } from "@/provider/ReactQueryProvider";
 import type { Metadata } from "next";
+import { ThemeProvider } from "next-themes";
 import "./globals.css";
-
-
 
 export const metadata: Metadata = {
   title: "Tienda Virtual",
-  description: "esta pagina es una tienda virtual demo, en la que se puede ver los productos y comprarlos",
+  description:
+    "esta pagina es una tienda virtual demo, en la que se puede ver los productos y comprarlos",
 };
 
 export default function RootLayout({
@@ -16,9 +16,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${Font.variable} antialiased`}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <ThemeProvider attribute="class" enableSystem defaultTheme="system">
+            {children}
+          </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );
