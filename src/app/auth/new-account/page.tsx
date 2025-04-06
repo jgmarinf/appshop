@@ -26,9 +26,13 @@ export default function NewAccount() {
           id="password"
           className="px-5 py-2 border bg-gray-200 rounded mb-5"
         />
-        <button onClick={loIng} className="btn-primary">
-          <Link href="/">Crear cuenta</Link>
-        </button>
+        <Link
+          onClick={loIng}
+          className="flex items-center justify-center btn-primary"
+          href="/"
+        >
+          Crear cuenta
+        </Link>
         <div className="flex items-center my-5">
           <div className="flex-1 border-t border-gray-500"></div>
           <div className="px-2 text-sm text-gray-800">0</div>
