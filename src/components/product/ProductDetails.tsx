@@ -1,5 +1,6 @@
 "use client";
 
+import { SkeletonProductDetails } from "@/components/ui/skeleton/SkeletonProductDetails";
 import { useProduct } from "@/hooks/useProduct";
 import { useCartStore } from "@/store/carrito-list/car-store";
 import Image from "next/image";
@@ -17,7 +18,7 @@ export const ProductDetails = ({ id }: Props) => {
   const [quantity, setQuantity] = useState(1);
   const { data: product, error, isPending } = useProduct(id);
 
-  if (isPending) return <h3>Cargando producto...</h3>;
+  if (isPending) return <SkeletonProductDetails />;
   if (error) return notFound();
 
   return (

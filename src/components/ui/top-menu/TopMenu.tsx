@@ -83,7 +83,7 @@ export const TopMenu = () => {
           </div>
         </Link>
         <button
-          className="m-2 p-2 rounded-md transition-all   "
+          className="m-2 p-2 rounded-md transition-all cursor-pointer"
           onClick={openSideMenu}
         >
           Menu

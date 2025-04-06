@@ -1,4 +1,5 @@
 "use client";
+import { SkeletonGrid } from "@/components/ui/skeleton/SkeletonGrid";
 import { useProducts } from "@/hooks/useProducts";
 import { Product } from "@/interfaces";
 import { ProductGridItem } from "../product-grid/ProductGridItem";
@@ -11,7 +12,7 @@ export const ProductGridCategory = ({ slug }: Props) => {
   const { data: products, error, isPending } = useProducts();
 
   if (error) return <h3 className="text-red-500">{error.message}</h3>;
-  if (isPending) return <h3>Cargando productos...</h3>;
+  if (isPending) return <SkeletonGrid />;
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4  gap-10 mb-10">
