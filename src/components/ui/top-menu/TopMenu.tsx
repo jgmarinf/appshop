@@ -14,7 +14,9 @@ export const TopMenu = () => {
   // Evitar problemas de hidratación montando el componente solo del lado del cliente
   useEffect(() => {
     setMounted(true);
-    setTheme("light");
+    if (theme === "system") {
+      setTheme("light");
+    }
   }, []);
 
   // Función para cambiar el tema
