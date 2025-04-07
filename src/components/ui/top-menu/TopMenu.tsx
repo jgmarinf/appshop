@@ -14,6 +14,7 @@ export const TopMenu = () => {
   // Evitar problemas de hidratación montando el componente solo del lado del cliente
   useEffect(() => {
     setMounted(true);
+    toggleTheme();
   }, []);
 
   // Función para cambiar el tema
@@ -62,11 +63,11 @@ export const TopMenu = () => {
         {mounted && (
           <button
             onClick={toggleTheme}
-            className="mx-2 cursor-pointer"
+            className="mx-2 cursor-pointer animate-fade-in"
             aria-label="Toggle theme"
           >
             {theme === "light" ? (
-              <IoMoonOutline className="w-5 h-5 " />
+              <IoMoonOutline className="w-5 h-5" />
             ) : (
               <IoSunnyOutline className="w-5 h-5 text-white" />
             )}
